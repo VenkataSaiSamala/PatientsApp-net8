@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AccountService } from '../_services/account.service';
 import {BsDropdownModule} from 'ngx-bootstrap/dropdown'
+import { ToastrService } from 'ngx-toastr';
 @Component({
   selector: 'app-nav',
   standalone: true,
@@ -11,6 +12,7 @@ import {BsDropdownModule} from 'ngx-bootstrap/dropdown'
 })
 export class NavComponent {
   accountService = inject(AccountService);
+  toastrService = inject(ToastrService);
   logginIn = false;
   model: any = {};
   login(){
@@ -19,7 +21,7 @@ export class NavComponent {
         console.log(response);
         this.logginIn = true;
       },
-      error: error => console.log(error)
+      error: error => this.toastrService.error(error.error)
     })
   }
 
