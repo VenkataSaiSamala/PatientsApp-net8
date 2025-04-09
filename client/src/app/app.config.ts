@@ -12,7 +12,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     provideAnimations(),
     provideToastr({
-      positionClass: 'toast-bottom-right'
+      positionClass:'toast-bottom-right'
     })
   ]
 };
