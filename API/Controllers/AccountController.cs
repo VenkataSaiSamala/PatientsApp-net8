@@ -17,7 +17,9 @@ namespace API.Controllers
         public async Task<ActionResult<UserDto>> Register(RegisterDto registerDto) 
         {
             if (await UserExists(registerDto.Username))
-                return BadRequest("User Already Exists !");
+            registerDto.Password = null;
+            var x = registerDto.Password.ToString();
+            return BadRequest("User Already exists!");
             
             using var hmac = new HMACSHA512();
 
